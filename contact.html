@@ -1,0 +1,157 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: Login.html");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Car Wash Management</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://openarticlesubmission.com/wp-content/uploads/2021/03/car-wash-services-auto-cleaning-with-water-and-vector-10862111.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    }
+  
+    header {
+      text-align:center;
+      color:#000000;
+    }
+
+    nav {
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color:#000000;
+      text-decoration: none;
+    }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .contact-info div {
+            width: 48%;
+        }
+        .contact-info label {
+            font-weight: bold;
+            color: #555;
+        }
+        .contact-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .contact-form {
+            margin-top: 20px;
+        }
+        .contact-form label {
+            font-weight: bold;
+            color: #555;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .contact-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+  <nav>
+  <br>
+  <br>
+  <br>
+    <ul>
+      <li><a href="http://localhost/practise/Home1.html">Home</a></li>
+      <li><a href="http://localhost/practise/service.html">Services</a></li>
+      <li><a href="http://localhost/practise/Booking%20form.html">Bookings</a></li>
+      <li><a href="http://localhost/practise/contact.html">Contact</a></li>
+    </ul>
+    </nav>
+    <div class="container">
+        <h1>Contact Us</h1>
+        
+        <div class="contact-info">
+            <div>
+                <label>Car Wash Name:</label>
+                <p>Fast & Clean Car Wash</p>
+
+                <label>Owner's Name:</label>
+                <p>John Doe</p>
+
+                <label>Email:</label>
+                <p>fastcarwash@gmail.com</p>
+
+                <label>Contact Number:</label>
+                <p>7805905011</p>
+            </div>
+            <div>
+                <label>Address:</label>
+                <p>1234 Clean Street, kadapa, CA 90210</p>
+
+                <label>Opening Hours:</label>
+                <p>Mon - sat: 10:00 AM - 5:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+
+        
+    <div class="footer">
+        <p>&copy; 2024 Fast & Clean Car Wash. All rights reserved.</p>
+    </div>
+	<center>
+	<footer>
+            <p>Developed by:Bhuvana sree</a></p>
+	</footer>
+	</center>
+</body>
+</html>  
