@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Wash Booking Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+      <li><a href="http://localhost/practise/Home1.html">Home</a></li>
+      <li><a href="http://localhost/practise/service.html">Services</a></li>
+      <li><a href="http://localhost/practise/Booking%20form.html">Bookings</a></li>
+      <li><a href="http://localhost/practise/contact.html">Contact</a></li>  
+    </ul>
+    </nav>
+
+    <main>
+        <h1>Booking Form</h1>
+        <form id="bookingForm" action="booking.php" method="POST">
+		      <!-- User ID field -->
+            <div class="form-group">
+                <label for="userID">User ID:</label>
+                <input type="text" id="userID" name="userID" required>
+                <button type="button" id="retrieveDetailsButton">Retrieve Details</button>
+            </div>
+
+            <!-- Autofilled fields -->
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact :</label>
+                <input type="text" id="contact" name="contact" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="vehicleType">Vehicle Type:</label>
+                <select id="vehicleType" name="vehicleType" required>
+                    <option value="2">2 Wheeler</option>
+                    <option value="3">3 Wheeler</option>
+                    <option value="4">4 Wheeler</option>
+                    <option value="6">6 Wheeler</option>
+                    <option value="10">10 Wheeler</option>
+                </select>
+            </div>
+            <div class="form-group">
+    <label for="schedule">Schedule:</label>
+    <input type="date" id="schedule" name="schedule" min="2024-10-01" max="2024-12-31" required>
+</div>
+
+            <!-- Time Slot Selection -->
+            <div class="form-group">
+    <label for="timeSlot">Time Slot:</label>
+    <select id="timeSlot" name="timeSlot" required>
+        <option value="10-11 AM" id="slot-10-11">10-11 AM</option>
+        <option value="11-12 AM" id="slot-11-12">11-12 AM</option>
+        <option value="12-1 PM" id="slot-12-1">12-1 PM</option>
+        <option value="2-3 PM" id="slot-2-3">2-3 PM</option>
+        <option value="3-4 PM" id="slot-3-4">3-4 PM</option>
+        <option value="4-5 PM" id="slot-4-5">4-5 PM</option>
+    </select>
+</div>
+            <h3>Select Services</h3>
+            <div class="service-group">
+                <label>
+                    <input type="checkbox" class="service" data-name="Tire Black" data-price-2="20" data-price-3="30" data-price-4="40" data-price-6="100" data-price-10="150"> Tire Black
+                </label>
+                <label>
+                    <input type="checkbox" class="service" data-name="Vacuum" data-price-2="20" data-price-3="20" data-price-4="50" data-price-6="100" data-price-10="150"> Vacuum
+                </label>
+                <label>
+                    <input type="checkbox" class="service" data-name="Wash" data-price-2="50" data-price-3="75" data-price-4="150" data-price-6="200" data-price-10="300"> Wash
+                </label>
+                <label>
+                    <input type="checkbox" class="service" data-name="Wax" data-price-2="50" data-price-3="60" data-price-4="100" data-price-6="200" data-price-10="300"> Wax
+                </label>
+				<label>
+                    <input type="checkbox" class="service" data-name="Spark" data-price-2="500" data-price-3="750" data-price-4="1000" data-price-6="1500" data-price-10="2500"> Spark plug replacement
+                </label>
+				<label>
+                    <input type="checkbox" class="service" data-name="Wiper" data-price-2="1000" data-price-3="1500" data-price-4="2000" data-price-6="3000" data-price-10="5000"> Wiper blades replacement
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Total Amount: $<span id="totalAmount">0</span></label>
+                <input type="hidden" id="totalPrice" name="totalPrice">
+            </div>
+
+            <input type="submit" value="Submit Booking">
+        </form>
+    </main>
+
+    <footer>
+        <p>Developed by:Bhuvana sree</a></p>
+    </footer>
+	<script>
+    // When the 'Retrieve Details' button is clicked, fetch user data by user ID
+    document.getElementById('retrieveDetailsButton').addEventListener("click", function () {
+        const userID = document.getElementById('userID').value;  // Get the entered user ID
+        if (userID) {
+            // Send a GET request to fetch user details based on the userID
+            fetch(`get_user_details.php?id=${userID}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && !data.error) {
+                        // Fill the form fields with the retrieved data
+                        document.getElementById("fullName").value = data.full_name;
+                        document.getElementById("contact").value = data.contact;
+                        document.getElementById("email").value = data.email;
+                    } else {
+                        // Handle case where user is not found or error occurs
+                        alert(data.error || "User not found. Please check the User ID.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching user details:', error);
+                    alert("An error occurred while fetching user details.");
+                });
+        } else {
+            alert("Please enter a User ID.");
+        }
+    });
+</script>
+
+
+    <script src="booking.js"></script>
+</body>
+</html>          
